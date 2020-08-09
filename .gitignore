@@ -1,0 +1,5 @@
+src/BSEC_*
+bsec_bme680
+bsec_iaq.state
+bsec_iaq.config
+

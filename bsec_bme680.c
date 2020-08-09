@@ -27,8 +27,8 @@
 
 /* definitions */
 
-#define DESTZONE "TZ=Europe/Berlin"
-#define temp_offset (5.0f)
+#define DESTZONE "TZ=UTC"
+#define temp_offset (0.0f)
 #define sample_rate_mode (BSEC_SAMPLE_RATE_LP)
 
 int g_i2cFid; // I2C Linux device handle
@@ -211,6 +211,11 @@ void output_ready(int64_t timestamp, float iaq, uint8_t iaq_accuracy,
   //printf(",%" PRId64, timestamp);
   //printf(",%" PRId64, timestamp_ms);
   printf("\r\n");
+
+  char cmd[256];
+  sprintf(cmd, "/usr/bin/python /home/pi/Pimoroni/ledshim/examples/gradient_graph.py %f", iaq);
+  system(cmd);
+
   fflush(stdout);
 }
 
